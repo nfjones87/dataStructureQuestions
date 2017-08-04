@@ -57,3 +57,36 @@ function continousLargeNum(arr){
 
 console.log(continousLargeNum([2,-2,1,4,5,-6,2,10,11]));
 
+
+
+
+// Write an algorithm which will sum two numbers stored in linked lists, 
+//where each node contains a single digit of the number.
+
+
+function Node (value) {
+    this.value = value;
+    this.next = null;
+};
+
+function addLists (list1, list2) {
+    let carry = 0;
+    let newList, head;
+
+    while(list1 || list2) {
+        let add = (list1.value + list2.value + carry);
+        if (add >= 10) {
+            carry = 1;
+            add -= 10;
+        } else {
+            carry=0;
+        }
+        let node = new Node(add);
+        if (head) {
+            newList.next = node;
+        } else {
+            newList = node;
+        }
+    }
+
+}
