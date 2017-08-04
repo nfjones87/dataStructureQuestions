@@ -74,7 +74,8 @@ function addLists (list1, list2) {
     let newList, head;
 
     while(list1 || list2) {
-        let add = (list1.value + list2.value + carry);
+        
+        let add = (list1 && list1.value) + (list2 && list2.value) + carry;
         if (add >= 10) {
             carry = 1;
             add -= 10;
@@ -86,6 +87,12 @@ function addLists (list1, list2) {
             newList.next = node;
         } else {
             newList = node;
+        }
+        if(list1){
+          list1 = list1.next;
+        }
+        if(list2){
+          list2 = list2.next;
         }
     }
 
