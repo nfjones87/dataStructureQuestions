@@ -137,3 +137,38 @@ const arr = [10, 15, 3, 2, 5, 20, 24, 1];
 const value = 25; 
 console.log(pairs(arr, value));
 
+
+
+
+
+// Implement a function to check if a tree is balanced 
+//(i.e. a tree where no two leaves differ in distance from the root by more than one).
+
+
+function balanceTree(tree) {
+
+    if(!tree.left){
+        if(tree.right){
+            if(tree.right.left || tree.right.right){
+                return false;
+            } else {
+            return true;
+            }
+        } 
+        return true;
+    }
+
+    if(!tree.right){
+        if(tree.left){
+            if(tree.left.left || tree.left.right) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return true;
+    }
+
+    return balanceTree(tree.left) && balanceTree(tree.right);
+
+}
