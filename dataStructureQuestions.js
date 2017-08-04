@@ -55,7 +55,7 @@ function continousLargeNum(arr){
   return max;
 }
 
-console.log(continousLargeNum([2,-2,1,4,5,-6,2,10,11]));
+//console.log(continousLargeNum([2,-2,1,4,5,-6,2,10,11]));
 
 
 
@@ -97,3 +97,43 @@ function addLists (list1, list2) {
     }
 
 }
+
+// Write an algorithm which will find 
+// all pairs of number in an array which sum to a certain value.
+
+//Inefficient
+// function pairs(arr, value){
+//   let resultObj = {};
+//   for(let i = 0; i < arr.length; i++){
+//     const otherValueArr = [...arr.slice(0,i), ...arr.slice(i+1)];
+//     for(let j = 0; j < otherValueArr.length; j++){
+//       const sum = otherValueArr[j] + arr[i];
+//       if(value === sum){
+//         if(!resultObj[arr[i]]){
+//           resultObj[otherValueArr[j]] = arr[i];
+//         }
+//       }
+//     }
+//   }
+//   return resultObj;
+// }
+
+//efficient
+function pairs(arr, value){
+  let resultObj = {};
+  const pair = [];
+  for(let i = 0; i< arr.length; i++){
+    let item = arr[i];
+    if(item in resultObj){
+      pair.push([item, resultObj[item]]);
+    }else{
+      resultObj[value-item] = item;
+    }
+  }
+  return pair;
+}
+
+const arr = [10, 15, 3, 2, 5, 20, 24, 1];
+const value = 25; 
+console.log(pairs(arr, value));
+
