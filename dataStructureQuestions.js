@@ -35,7 +35,25 @@ function arraySwapper(arr) {
 }
 
 
-console.log(arraySwapper([[0,1,2,4],[3,2,4,0],[1,2,3,4],[2,3,0,1]]));
+// console.log(arraySwapper([[0,1,2,4],[3,2,4,0],[1,2,3,4],[2,3,0,1]]));
 
+function continousLargeNum(arr){
+  let maxSum = 0;
+  let max = -1000;
+  for(let i = 0; i < arr.length; i++){
 
+    if(arr[i] > 0){
+      maxSum += arr[i];
+      if(max < maxSum){
+        max = maxSum;
+      }
+      if(arr[i+1] !== undefined && arr[i+1] < 0){
+        maxSum = 0;
+      }
+    }
+  }
+  return max;
+}
+
+console.log(continousLargeNum([2,-2,1,4,5,-6,2,10,11]));
 
